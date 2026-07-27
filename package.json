@@ -2,9 +2,10 @@
   "name": "copy-filename",
   "displayName": "Copy Filename",
   "description": "Copy a file's basename from the editor tab or explorer context menu. Optionally include or exclude the file extension.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "yaoz",
   "license": "MIT",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },
