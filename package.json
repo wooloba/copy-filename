@@ -1,0 +1,77 @@
+{
+  "name": "copy-filename",
+  "displayName": "Copy Filename",
+  "description": "Copy a file's basename from the editor tab or explorer context menu. Optionally include or exclude the file extension.",
+  "version": "0.1.1",
+  "publisher": "yaoz",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "copy",
+    "filename",
+    "basename",
+    "clipboard",
+    "tab",
+    "explorer"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copyFilename.copy",
+        "title": "Copy Filename"
+      }
+    ],
+    "menus": {
+      "editor/title/context": [
+        {
+          "command": "copyFilename.copy",
+          "group": "1_cutcopypaste@50",
+          "when": "resourceScheme == file || resourceScheme == untitled"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "copyFilename.copy",
+          "group": "5_cutcopypaste@50",
+          "when": "resourceScheme == file && !explorerResourceIsFolder"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Copy Filename",
+      "properties": {
+        "copyFilename.includeExtension": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include the file extension when copying the filename (e.g. app.config.ts vs app.config)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish:vscode": "vsce publish",
+    "publish:openvsx": "ovsx publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "ovsx": "^0.10.1",
+    "typescript": "^5.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooloba/copy-filename"
+  }
+}
